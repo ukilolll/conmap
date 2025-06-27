@@ -1,4 +1,4 @@
-package main
+package conmap
 
 import "sync"
 
@@ -35,5 +35,5 @@ func (b *IoMap[K, V]) Range(callback func(key K, value V)) {
 }
 
 func NewIoMap[K comparable, V any]() *IoMap[K, V] {
-	return &IoMap[K, V]{Map: make(map[K]V)}
+	return &IoMap[K, V]{Map: make(map[K]V),Mu: sync.RWMutex{}}
 }
